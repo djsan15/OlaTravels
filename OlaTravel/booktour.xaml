@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="OlaTravel.booktour"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/back3.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="OlaTravel" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#ff9900"/>
+            <TextBlock Text="Tour Details" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#ff9900"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Destination:" FontSize="30" Foreground="Black" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+            <TextBlock Text="Distance:" FontSize="30" Foreground="Black" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+            <TextBlock Text="OlaCab Fare:" FontSize="30" Foreground="Black" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2"/>
+            <TextBlock Text="Date:" FontSize="30" Foreground="Black" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3"/>
+            <TextBlock Text="Time:" FontSize="30" Foreground="Black" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="0" Grid.Row="4"/>
+
+            <TextBlock x:Name="destination"  FontSize="20" Foreground="Black" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Width="220" TextWrapping="Wrap"/>
+            <TextBlock x:Name="distanceblock" FontSize="30" Foreground="#ff6600" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock x:Name="fare" FontSize="30" Foreground="#ff6600" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2"/>
+            <toolkit:DatePicker x:Name="dp" Grid.Column="1" Grid.Row="3" Foreground="#ff6600" BorderBrush="#ff6600"
+                                VerticalAlignment="Center" />
+            <toolkit:TimePicker x:Name="tp" Grid.Column="1" Grid.Row="4" Foreground="#ff6600" BorderBrush="#ff6600"
+                                VerticalAlignment="Center"/>
+            <Button Content="Confirm" BorderBrush="#ff6600" BorderThickness="3" Foreground="#ff6600"
+                    Grid.Column="1" Grid.Row="5" Click="Button_Click"   />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

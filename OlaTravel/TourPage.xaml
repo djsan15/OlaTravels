@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="OlaTravel.TourPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/back3.jpg"/>
+        </Grid.Background>
+        <ProgressBar x:Name="pb" IsIndeterminate="true" Foreground="#ff6600" Visibility="Collapsed" Grid.Row="1" VerticalAlignment="Bottom"/>
+        <Grid Grid.Row="0">
+            <toolkit:PhoneTextBox Hint="Search for places" Background="LightGray" Height="80" VerticalAlignment="Top"/>
+            <toolkit:AutoCompleteBox x:Name="Search_AutocompleteBox" 
+                                     Foreground="Black" 
+                                     Height="82"
+                                     VerticalAlignment="Top" 
+                                     Background="Transparent"
+                                     Loaded="Search_AutocompleteBox_Loaded" 
+                                     Padding="4"
+                                     KeyUp="Search_AutocompleteBox_KeyUp"/>
+        </Grid>
+            <ListBox x:Name="Search_List" ItemsSource="{Binding }" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#ff9900" BorderThickness="2" >
+                    <StackPanel Orientation="Vertical" Margin="0,0,0,0" Width="480" Tap="Search_StackPanel_Tap">
+                                             <TextBlock x:Name="Name"
+                                                    Foreground="Black"
+                                                   FontSize="30"
+                                                   Margin="15,0,0,0"
+                                                   Text="{Binding fullname}"
+                                               TextWrapping="Wrap"
+                                               />
+                            <TextBlock x:Name="latt" Visibility="Collapsed" Text="{Binding lat}"/>
+                            <TextBlock x:Name="lngg" Visibility="Collapsed" Text="{Binding lng}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <maps:Map x:Name="MyMap" Grid.Row="2" Width="480" Height="300" VerticalAlignment="Top"/>
+        <Rectangle Grid.Row="2" Width="50" Height="50"  VerticalAlignment="Top" HorizontalAlignment="Right"
+                Margin="10"  Tap="Rectangle_Tap">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Assets/appbar.moon.full.png" Stretch="Fill"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Source="/Assets/pin.png" Grid.Row="2" Width="70" Height="70" Margin="0,0,0,150"/>
+        <Button Grid.Row="2" Height="80"
+                VerticalAlignment="Bottom" Content="Add to your tour" 
+                Foreground="#ff9900" BorderBrush="#ff9900"
+                Click="Add_Click"/>
+    </Grid>
+    
+</phone:PhoneApplicationPage>
